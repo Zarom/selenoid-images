@@ -42,6 +42,8 @@ test_image(){
 
 test_image "zarrom/yandex" $tag
 docker tag "zarrom/yandex:$tag" "zarrom/vnc_yandex:$tag"
+docker tag "zarrom/yandex:$tag" "zarrom/yandex:latest"
+docker tag "zarrom/yandex:$tag" "zarrom/vnc_yandex:latest"
 #docker tag "zarrom/yandex:$tag" "zarrom/vnc:yandex_$tag"
 
 #read -p "Push?" yn

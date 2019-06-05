@@ -24,7 +24,7 @@ if [ "$method" == "yandex/apt" ]; then
     ./build-dev.sh $method $browser_version false
 fi
 pushd yandex
-../build.sh operadriver $browser_version $driver_version selenoid/yandex:$tag
+../build.sh operadriver $browser_version $driver_version zarrom/yandex:$tag
 popd
 
 test_image(){
@@ -40,19 +40,19 @@ test_image(){
     fi
 }
 
-test_image "selenoid/yandex" $tag
-docker tag "selenoid/yandex:$tag" "selenoid/vnc_yandex:$tag"
-docker tag "selenoid/yandex:$tag" "selenoid/vnc:yandex_$tag"
+test_image "zarrom/yandex" $tag
+docker tag "zarrom/yandex:$tag" "zarrom/vnc_yandex:$tag"
+#docker tag "zarrom/yandex:$tag" "zarrom/vnc:yandex_$tag"
 
-read -p "Push?" yn
-if [ "$yn" == "y" ]; then
-	docker push "selenoid/dev_yandex:"$browser_version
-	if [ "$method" == "yandex/apt" ]; then
-	    docker push "selenoid/dev_yandex_full:"$browser_version
-    fi
-	docker push "selenoid/yandex:$tag"
-    docker tag "selenoid/yandex:$tag" "selenoid/yandex:latest"
-    docker push "selenoid/yandex:latest"
-    docker push "selenoid/vnc:yandex_"$tag
-    docker push "selenoid/vnc_yandex:"$tag
-fi
+#read -p "Push?" yn
+#if [ "$yn" == "y" ]; then
+#	docker push "zarrom/dev_yandex:"$browser_version
+#	if [ "$method" == "yandex/apt" ]; then
+#	    docker push "zarrom/dev_yandex_full:"$browser_version
+#    fi
+#	docker push "zarrom/yandex:$tag"
+#    docker tag "zarrom/yandex:$tag" "zarrom/yandex:latest"
+#    docker push "zarrom/yandex:latest"
+#    docker push "zarrom/vnc:yandex_"$tag
+#    docker push "zarrom/vnc_yandex:"$tag
+#fi

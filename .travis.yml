@@ -14,7 +14,7 @@ before_install:
   - YANDEX_VERSION=${BASH_REMATCH[1]}
   - echo "Yandex version ${YANDEX_FULL_VERSION}"
   - OPERADRIVER_RELEASE=$(curl --silent "https://github.com/operasoftware/operachromiumdriver/releases/latest")
-  - REGEX="v\.([0-9]+\.[0-9]+)"
+  - REGEX="v\.(([0-9]+\.)+[0-9]+)"
   - if [[ $OPERADRIVER_RELEASE =~ $REGEX ]]; then :; fi
   - OPERADRIVER_VERSION=${BASH_REMATCH[1]}
   - echo "Operadriver version ${OPERADRIVER_VERSION}"
@@ -25,7 +25,7 @@ script:
   - cd selenium
   - ./automate_yandex.sh $YANDEX_FULL_VERSION $OPERADRIVER_VERSION $YANDEX_VERSION
   - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-  - docker push ${DOCKER_USERNAME}/yandex:latest
   - docker push ${DOCKER_USERNAME}/yandex:${YANDEX_VERSION}
-  - docker push ${DOCKER_USERNAME}/vnc_yandex:latest
+  - docker push ${DOCKER_USERNAME}/yandex:latest
   - docker push ${DOCKER_USERNAME}/vnc_yandex:${YANDEX_VERSION}
+  - docker push ${DOCKER_USERNAME}/vnc_yandex:latest

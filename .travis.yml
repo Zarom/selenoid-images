@@ -17,7 +17,7 @@ before_install:
   #- REGEX="v\.(([0-9]+\.)+[0-9]+)"
   #- if [[ $OPERADRIVER_RELEASE =~ $REGEX ]]; then :; fi
   #- OPERADRIVER_VERSION=${BASH_REMATCH[1]}
-  - OPERADRIVER_VERSION="v.77.0.3865.120"
+  - OPERADRIVER_VERSION="77.0.3865.120"
   - echo "Operadriver version ${OPERADRIVER_VERSION}"
 
 install: true
